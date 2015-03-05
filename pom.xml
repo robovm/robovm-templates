@@ -8,10 +8,29 @@
   </prerequisites>
 
   <groupId>org.robovm</groupId>
-  <artifactId>robovm-templates-parent</artifactId>
+  <artifactId>org.robovm.templates.parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>RoboVM templates parent</name>
+  <name>RoboVM Templates for Eclipse and Maven integration</name>
   <packaging>pom</packaging>
+  
+  <scm>
+    <url>https://github.com/robovm/robovm-templates</url>
+    <connection>scm:git:git://github.com/robovm/robovm-templates.git</connection>
+    <developerConnection>scm:git:git@github.com:robovm/robovm-templates.git</developerConnection>
+  </scm>
+
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/robovm/robovm-templates/issues</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>GNU General Public License, version 2</name>
+      <url>http://www.gnu.org/licenses/gpl-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   
   <properties>
      <robovm.version>1.0.0-SNAPSHOT</robovm.version>
@@ -71,5 +90,9 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
+  <modules>
+    <module>default</module>
+  </modules>
 
 </project>

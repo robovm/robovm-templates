@@ -1,6 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
 
 package ${package};
 
@@ -44,7 +41,7 @@ public class MyViewController extends UIViewController {
         button.addOnTouchUpInsideListener(new UIControl.OnTouchUpInsideListener() {
             @Override
             public void onTouchUpInside (UIControl control, UIEvent event) {
-                label.setText("Click ${symbol_pound}" + (++clickCount));
+                label.setText("Click Nr. " + (++clickCount));
             }
         });
         view.addSubview(button);
