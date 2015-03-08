@@ -192,7 +192,12 @@ public class Templater {
             appName = mainClassName;
         }
         if (packageName == null || packageName.length() == 0) {
-            packageName = mainClass.substring(0, mainClass.lastIndexOf('.'));
+            int index = mainClass.lastIndexOf('.');
+            if (index == -1) {
+                packageName = "";
+            } else {
+                packageName = mainClass.substring(0, index);
+            }
         }
         packageDirName = packageName.replaceAll("\\.", File.separator);
         if (appId == null || appId.length() == 0) {
