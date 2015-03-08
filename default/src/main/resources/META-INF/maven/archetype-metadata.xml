@@ -18,6 +18,9 @@
     <requiredProperty key="mainClass">
       <defaultValue>Main</defaultValue>
     </requiredProperty>
+    <requiredProperty key="appName">
+      <defaultValue>App</defaultValue>
+    </requiredProperty>
   </requiredProperties>
   <fileSets>
     <fileSet filtered="true" encoding="UTF-8">
@@ -36,6 +39,8 @@
       <directory></directory>
       <includes>
         <include>Info.plist.xml</include>
+        <include>robovm.xml</include>
+        <include>robovm.properties</include>
       </includes>
     </fileSet>
   </fileSets>
