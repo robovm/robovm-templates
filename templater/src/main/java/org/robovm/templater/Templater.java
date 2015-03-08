@@ -79,7 +79,7 @@ public class Templater {
             throw new NullPointerException("template");
         }
         this.template = template;
-        templateURL = Templater.class.getResource("/templates/" + template + "-template.tar.gz");
+        templateURL = Templater.class.getResource("/templates/robovm-" + template + "-template.tar.gz");
         if (templateURL == null) {
             throw new IllegalArgumentException(String.format("Template with name '%s' doesn't exist!", template));
         }
@@ -174,14 +174,14 @@ public class Templater {
      * @param projectRoot
      * 
      * @throws NullPointerException if {@code projectRoot == null}.
-     * @throws NullPointerException if no main class had been specified.
+     * @throws IllegalArgumentException if no main class had been specified.
      */
     public void buildProject(File projectRoot) {
         if (projectRoot == null) {
             throw new NullPointerException("projectRoot");
         }
         if (mainClass == null) {
-            throw new NullPointerException("mainClass");
+            throw new IllegalArgumentException("No main class specified");
         }
         mainClassName = mainClass.substring(mainClass.lastIndexOf('.') + 1);
 
