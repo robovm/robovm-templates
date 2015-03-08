@@ -27,13 +27,12 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
- <!--   <dependency>
+ 	<dependency>
         <groupId>org.robovm</groupId>
         <artifactId>robovm-default-template</artifactId>
         <version>${robovm.version}</version>
-        <classifier>dist</classifier>
         <type>tar.gz</type>
-      </dependency>-->
+	</dependency>
   </dependencies>
 
   <build>
@@ -75,14 +74,13 @@
               <artifactId>robovm-dist-compiler</artifactId>
               <outputDirectory>lib</outputDirectory>
             </artifactItem>
-         <!--   <artifactItem>
+			<artifactItem>
               <groupId>org.robovm</groupId>
               <artifactId>robovm-default-template</artifactId>
-              <classifier>dist</classifier>
               <overWrite>true</overWrite>
               <type>tar.gz</type>
               <outputDirectory>src/main/resources/templates</outputDirectory>
-            </artifactItem>-->
+            </artifactItem>
           </artifactItems>
         </configuration>
         <executions>
