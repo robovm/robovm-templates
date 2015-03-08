@@ -59,7 +59,7 @@ public class Templater {
 
     private final String template;
     private final URL templateURL;
-    private String mainClass = "org.robovm.sample.Main";
+    private String mainClass;
     private String mainClassName;
     private String packageName;
     private String packageDirName;
@@ -295,6 +295,11 @@ public class Templater {
     }
 
     public static void main(String[] args) {
+        if (args.length <= 1) {
+            printHelpText();
+            return;
+        }
+
         String template = null;
         String mainClass = null;
         String packageName = null;
@@ -302,11 +307,6 @@ public class Templater {
         String appId = null;
         String executable = null;
         File projectRoot = null;
-
-        if (args.length <= 1) {
-            printHelpText();
-            return;
-        }
 
         for (int i = 0; i < args.length; i += 2) {
             if (isOption(args[i])) {
