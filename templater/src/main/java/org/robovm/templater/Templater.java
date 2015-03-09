@@ -293,10 +293,17 @@ public class Templater {
             String content = FileUtils.readFileToString(file, "UTF-8");
             content = content.replaceAll(MAVEN_ARCHETYPE_SET_PLACEHOLDER, "");
             content = content.replaceAll(DOLLAR_SYMBOL_PLACEHOLDER, Matcher.quoteReplacement("$"));
-            content = content.replaceAll(PACKAGE_PLACEHOLDER, packageName);
+            content = content.replaceAll(PACKAGE_PLACEHOLDER, getPackageNameReplacement(packageName));
             content = content.replaceAll(MAIN_CLASS_PLACEHOLDER, mainClassName);
             FileUtils.writeStringToFile(file, content, "UTF-8");
         }
+    }
+
+    private static String getPackageNameReplacement(String packageName) {
+        if (packageName == null || packageName.length() == 0) {
+            return "";
+        }
+        return String.format("package %s;", packageName);
     }
 
     public static void main(String[] args) {
