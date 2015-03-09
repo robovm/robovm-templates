@@ -1,4 +1,3 @@
-
 ${package}
 
 import org.robovm.apple.foundation.NSAutoreleasePool;

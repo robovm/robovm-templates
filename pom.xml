@@ -113,6 +113,7 @@
 
   <modules>
     <module>default</module>
+    <module>console</module>
     <module>templater</module>
   </modules>
 
