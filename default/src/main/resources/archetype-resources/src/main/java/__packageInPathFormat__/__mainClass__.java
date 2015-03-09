@@ -28,8 +28,8 @@ public class ${mainClass} extends UIApplicationDelegateAdapter {
     }
 
     public static void main (String[] args) {
-        NSAutoreleasePool pool = new NSAutoreleasePool();
-        UIApplication.main(args, null, ${mainClass}.class);
-        pool.close();
+        try (NSAutoreleasePool pool = new NSAutoreleasePool()) {
+    		UIApplication.main(args, null, ${mainClass}.class);
+    	}
     }
 }
