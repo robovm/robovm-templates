@@ -8,7 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>robovm-templates-templater</artifactId>
+  <artifactId>robovm-templater</artifactId>
   <name>RoboVM Template Generator</name>
   <packaging>jar</packaging>
 
