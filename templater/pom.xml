@@ -27,18 +27,18 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
- 	<dependency>
-        <groupId>org.robovm</groupId>
-        <artifactId>robovm-default-template</artifactId>
-        <version>${robovm.version}</version>
-        <type>tar.gz</type>
-	</dependency>
-  <dependency>
-        <groupId>org.robovm</groupId>
-        <artifactId>robovm-console-template</artifactId>
-        <version>${robovm.version}</version>
-        <type>tar.gz</type>
-  </dependency>
+ 	  <dependency>
+      <groupId>org.robovm</groupId>
+      <artifactId>robovm-default-template</artifactId>
+      <version>${robovm.version}</version>
+      <type>tar.gz</type>
+	  </dependency>
+    <dependency>
+      <groupId>org.robovm</groupId>
+      <artifactId>robovm-console-template</artifactId>
+      <version>${robovm.version}</version>
+      <type>tar.gz</type>
+    </dependency>
   </dependencies>
 
   <build>
@@ -48,9 +48,6 @@
         <version>2.5</version>
         <configuration>
           <filesets>
-            <fileset>
-              <directory>lib</directory>
-            </fileset>
             <fileset>
               <directory>src/main/resources/templates</directory>
             </fileset>
@@ -70,16 +67,6 @@
           <stripVersion>true</stripVersion>
           <stripClassifier>true</stripClassifier>
           <artifactItems>
-            <artifactItem>
-              <groupId>org.apache.commons</groupId>
-              <artifactId>commons-compress</artifactId>
-              <outputDirectory>lib</outputDirectory>
-            </artifactItem>
-            <artifactItem>
-              <groupId>org.robovm</groupId>
-              <artifactId>robovm-dist-compiler</artifactId>
-              <outputDirectory>lib</outputDirectory>
-            </artifactItem>
 			      <artifactItem>
               <groupId>org.robovm</groupId>
               <artifactId>robovm-default-template</artifactId>
