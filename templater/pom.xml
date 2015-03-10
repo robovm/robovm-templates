@@ -12,6 +12,10 @@
   <name>RoboVM Template Generator</name>
   <packaging>jar</packaging>
 
+  <properties>
+    <robovm.version>1.0.0-SNAPSHOT</robovm.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.commons</groupId>
