@@ -45,8 +45,8 @@
   </licenses>
   
   <properties>
-     <robovm.version>1.0.0-SNAPSHOT</robovm.version>
-     <robovm.maven.version>1.0.0-SNAPSHOT</robovm.maven.version>
+     <robovm.version>1.0.0</robovm.version>
+     <robovm.maven.version>1.0.0</robovm.maven.version>
   </properties>
 
   <build>
