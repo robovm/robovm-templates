@@ -53,7 +53,7 @@ public class Templater {
     private static final String MAIN_CLASS_FILE_PLACEHOLDER = "__mainClass__";
     private static final List<String> SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS = Arrays.asList("xml", "java");
     private static final String DOLLAR_SYMBOL_PLACEHOLDER = Pattern.quote("${symbol_dollar}");
-    private static final String PACKAGE_PLACEHOLDER = Pattern.quote("${package}");
+    private static final String PACKAGE_PLACEHOLDER = Pattern.quote("package ${package};");
     private static final String MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
     private static final String MAVEN_ARCHETYPE_SET_PLACEHOLDER = "#set\\(.*\\)\n";
 

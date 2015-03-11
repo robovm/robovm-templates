@@ -1,4 +1,4 @@
-${package}
+package ${package};
 
 import org.robovm.apple.foundation.NSAutoreleasePool;
 import org.robovm.apple.uikit.UIApplication;

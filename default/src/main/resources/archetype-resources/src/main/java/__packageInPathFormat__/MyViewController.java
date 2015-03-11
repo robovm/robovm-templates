@@ -1,4 +1,4 @@
-${package}
+package ${package};
 
 import org.robovm.apple.coregraphics.CGRect;
 import org.robovm.apple.uikit.NSTextAlignment;
