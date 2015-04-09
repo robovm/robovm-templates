@@ -103,6 +103,7 @@
 
   <modules>
     <module>default</module>
+    <module>single-view</module>
     <module>console</module>
     <module>templater</module>
   </modules>

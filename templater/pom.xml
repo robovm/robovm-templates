@@ -40,6 +40,12 @@
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
+            <artifactId>robovm-single-view-template</artifactId>
+            <version>${robovm.version}</version>
+            <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
             <artifactId>robovm-console-template</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
@@ -82,6 +88,13 @@
                         <artifactItem>
                             <groupId>org.robovm</groupId>
                             <artifactId>robovm-console-template</artifactId>
+                            <overWrite>true</overWrite>
+                            <type>tar.gz</type>
+                            <outputDirectory>src/main/resources/templates</outputDirectory>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>org.robovm</groupId>
+                            <artifactId>robovm-single-view-template</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>
