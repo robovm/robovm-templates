@@ -42,6 +42,8 @@ import org.robovm.compiler.config.Config;
 import org.robovm.compiler.config.Config.TargetType;
 import org.robovm.compiler.config.OS;
 import org.robovm.compiler.config.Resource;
+import org.robovm.compiler.log.ConsoleLogger;
+import org.robovm.compiler.log.Logger;
 
 /**
  * The RoboVM {@code Templater} generates a new RoboVM project from a template.
@@ -57,6 +59,7 @@ public class Templater {
     private static final String MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
     private static final String MAVEN_ARCHETYPE_SET_PLACEHOLDER = "#set\\(.*\\)\n";
 
+    private final Logger logger;
     private final String template;
     private final URL templateURL;
     private String mainClass;
@@ -74,10 +77,14 @@ public class Templater {
      * @throws IllegalArgumentException if the specified {@code template} 
      *             doesn't exist.
      */
-    public Templater(String template) {
+    public Templater(Logger logger, String template) {
+        if (logger == null) {
+            throw new NullPointerException("logger");
+        }
         if (template == null) {
             throw new NullPointerException("template");
         }
+        this.logger = logger;
         this.template = template;
         templateURL = Templater.class.getResource("/templates/robovm-" + template + "-template.tar.gz");
         if (templateURL == null) {
@@ -214,8 +221,8 @@ public class Templater {
         } catch (IOException e) {
             throw new Error(e);
         }
-        System.out.println(String.format("Project with template '%s' successfully created in: %s", template,
-                projectRoot.getAbsolutePath()));
+        logger.info("Project with template '%s' successfully created in: %s", template,
+                projectRoot.getAbsolutePath());
     }
 
     private void extractArchive(File archive, File destDir) throws IOException {
@@ -358,7 +365,8 @@ public class Templater {
             }
         }
 
-        new Templater(template).mainClass(mainClass).packageName(packageName).appName(appName).appId(appId)
+        new Templater(new ConsoleLogger(true), template).mainClass(mainClass).packageName(packageName).appName(appName)
+                .appId(appId)
                 .executable(executable).buildProject(projectRoot);
     }
 
