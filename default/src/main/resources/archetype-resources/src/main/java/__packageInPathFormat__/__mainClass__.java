@@ -12,7 +12,7 @@ public class ${mainClass} extends UIApplicationDelegateAdapter {
     private MyViewController rootViewController;
 
     @Override
-    public boolean didFinishLaunching (UIApplication application, UIApplicationLaunchOptions launchOptions) {
+    public boolean didFinishLaunching(UIApplication application, UIApplicationLaunchOptions launchOptions) {
         // Set up the view controller.
         rootViewController = new MyViewController();
 
@@ -26,7 +26,7 @@ public class ${mainClass} extends UIApplicationDelegateAdapter {
         return true;
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         try (NSAutoreleasePool pool = new NSAutoreleasePool()) {
             UIApplication.main(args, null, ${mainClass}.class);
         }

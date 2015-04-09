@@ -18,7 +18,7 @@ public class MyViewController extends UIViewController {
     private final UILabel label;
     private int clickCount;
 
-    public MyViewController () {
+    public MyViewController() {
         // Get the view of this view controller.
         UIView view = getView();
 
