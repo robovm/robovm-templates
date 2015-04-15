@@ -45,8 +45,8 @@
   </licenses>
   
   <properties>
-     <robovm.version>1.1.0</robovm.version>
-     <robovm.maven.version>1.1.0</robovm.maven.version>
+     <robovm.version>${project.version}</robovm.version>
+     <robovm.maven.version>${project.version}</robovm.maven.version>
   </properties>
 
   <profiles>
