@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.robovm</groupId>
         <artifactId>robovm-templates-parent</artifactId>
-        <version>1.1.0</version>
+        <version>1.1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>robovm-templater</artifactId>
@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <robovm.version>1.1.0</robovm.version>
+        <robovm.version>1.1.1-SNAPSHOT</robovm.version>
     </properties>
 
     <dependencies>
