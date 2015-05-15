@@ -1,6 +1,8 @@
 .settings/
 .classpath
 .project
+*.iml
+.idea/
 target/
 templater/lib/
 templater/src/main/resources/templates/

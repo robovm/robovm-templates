@@ -19,8 +19,6 @@
       </includes>
       <excludes>
         <exclude>pom.xml</exclude>
-        <exclude>robovm.properties</exclude>
-        <exclude>robovm.xml</exclude>
       </excludes>
     </fileSet>
   </fileSets>

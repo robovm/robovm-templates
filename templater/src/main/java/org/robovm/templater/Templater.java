@@ -25,9 +25,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
@@ -53,11 +51,16 @@ import org.robovm.compiler.log.Logger;
 public class Templater {
     private static final String PACKAGE_FOLDER_PLACEHOLDER = "__packageInPathFormat__";
     private static final String MAIN_CLASS_FILE_PLACEHOLDER = "__mainClass__";
-    private static final List<String> SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS = Arrays.asList("xml", "java");
+    private static final Set<String> SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS = new HashSet<>(Arrays.asList("xml", "java"));
     private static final String DOLLAR_SYMBOL_PLACEHOLDER = Pattern.quote("${symbol_dollar}");
     private static final String PACKAGE_PLACEHOLDER = Pattern.quote("package ${package};");
     private static final String MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
     private static final String MAVEN_ARCHETYPE_SET_PLACEHOLDER = "#set\\(.*\\)\n";
+
+    private static final String ROBOVM_PROPERTIES_FILE = "robovm.properties";
+    private static final String ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER = Pattern.quote("${package}");
+    private static final String ROBOVM_PROPERTIES_MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
+    private static final String ROBOVM_PROPERTIES_APP_NAME_PLACEHOLDER = Pattern.quote("${appName}");
 
     private final Logger logger;
     private final String template;
@@ -216,8 +219,6 @@ public class Templater {
             FileUtils.copyURLToFile(templateURL, targetFile);
             extractArchive(targetFile, targetFile.getParentFile());
             targetFile.delete();
-
-            generateConfig(projectRoot);
         } catch (IOException e) {
             throw new Error(e);
         }
@@ -251,43 +252,6 @@ public class Templater {
         }
     }
 
-    private void generateConfig(File projectRoot) throws IOException {
-        File propsFile = new File(projectRoot, "robovm.properties");
-        File configFile = new File(projectRoot, "robovm.xml");
-
-        Properties props = new Properties();
-        Config.Builder configBuilder = new Config.Builder();
-
-        props.setProperty("app.mainclass", mainClass);
-        props.setProperty("app.name", appName);
-        props.setProperty("app.executable", mainClassName);
-        props.setProperty("app.id", appId);
-        props.setProperty("app.version", "1.0");
-        props.setProperty("app.build", "1");
-
-        File infoPList = new File(projectRoot, "Info.plist.xml");
-        File resources = new File(projectRoot, "resources");
-        resources.mkdirs();
-
-        configBuilder.os(OS.ios);
-        configBuilder.arch(Arch.thumbv7);
-        configBuilder.targetType(TargetType.ios);
-        configBuilder.mainClass("${app.mainclass}");
-        configBuilder.executableName("${app.executable}");
-        configBuilder.iosInfoPList(infoPList);
-        configBuilder.addResource(new Resource(resources, null));
-
-        configBuilder.write(configFile);
-
-        Writer writer = null;
-        try {
-            writer = new OutputStreamWriter(new FileOutputStream(propsFile));
-            props.store(writer, "");
-        } finally {
-            IOUtils.closeQuietly(writer);
-        }
-    }
-
     private String substitutePlaceholdersInFileName(String fileName) {
         fileName = fileName.replaceAll(PACKAGE_FOLDER_PLACEHOLDER, packageDirName);
         fileName = fileName.replaceAll(MAIN_CLASS_FILE_PLACEHOLDER, mainClassName);
@@ -296,7 +260,16 @@ public class Templater {
 
     private void substitutePlaceholdersInFile(File file) throws IOException {
         String extension = FilenameUtils.getExtension(file.getName());
-        if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
+        if (ROBOVM_PROPERTIES_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replaceAll(ROBOVM_PROPERTIES_APP_NAME_PLACEHOLDER, appName);
+            content = content.replaceAll(ROBOVM_PROPERTIES_MAIN_CLASS_PLACEHOLDER, mainClassName);
+            String propsPackageName = packageName == null || packageName.length() == 0? "": packageName;
+            content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
+            // need to fix up app.mainclass in case package name was empty
+            content = content.replaceAll(Pattern.quote("mainclass=."), "mainclass=");
+            FileUtils.writeStringToFile(file, content, "UTF-8");
+        } else if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
             String content = FileUtils.readFileToString(file, "UTF-8");
             content = content.replaceAll(MAVEN_ARCHETYPE_SET_PLACEHOLDER, "");
             content = content.replaceAll(DOLLAR_SYMBOL_PLACEHOLDER, Matcher.quoteReplacement("$"));
