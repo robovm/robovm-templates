@@ -44,7 +44,8 @@ import org.apache.commons.io.IOUtils;
 public class Templater {
     private static final String PACKAGE_FOLDER_PLACEHOLDER = "__packageInPathFormat__";
     private static final String MAIN_CLASS_FILE_PLACEHOLDER = "__mainClass__";
-    private static final Set<String> SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS = new HashSet<>(Arrays.asList("xml", "java"));
+    private static final Set<String> SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS = new HashSet<>(Arrays.asList("xml",
+            "java"));
     private static final String DOLLAR_SYMBOL_PLACEHOLDER = Pattern.quote("${symbol_dollar}");
     private static final String PACKAGE_PLACEHOLDER = Pattern.quote("package ${package};");
     private static final String MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
@@ -200,6 +201,9 @@ public class Templater {
         packageDirName = packageName.replaceAll("\\.", File.separator);
         if (appId == null || appId.length() == 0) {
             appId = packageName;
+            if (appId == null || appId.length() == 0) {
+                appId = mainClassName;
+            }
         }
 
         try {
@@ -248,9 +252,11 @@ public class Templater {
         String extension = FilenameUtils.getExtension(file.getName());
         if (ROBOVM_PROPERTIES_FILE.equals(file.getName())) {
             String content = FileUtils.readFileToString(file, "UTF-8");
+            // special case for app id
+            content = content.replaceAll(Pattern.quote("app.id=${package}"), "app.id=" + appId);
             content = content.replaceAll(ROBOVM_PROPERTIES_APP_NAME_PLACEHOLDER, appName);
             content = content.replaceAll(ROBOVM_PROPERTIES_MAIN_CLASS_PLACEHOLDER, mainClassName);
-            String propsPackageName = packageName == null || packageName.length() == 0? "": packageName;
+            String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
             content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
             // need to fix up app.mainclass in case package name was empty
             content = content.replaceAll(Pattern.quote("mainclass=."), "mainclass=");
