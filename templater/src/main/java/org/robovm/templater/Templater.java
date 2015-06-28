@@ -56,6 +56,11 @@ public class Templater {
     private static final String ROBOVM_PROPERTIES_MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
     private static final String ROBOVM_PROPERTIES_APP_NAME_PLACEHOLDER = Pattern.quote("${appName}");
 
+    private static final String ANDROID_MANIFEST_FILE = "AndroidManifest.xml";
+    private static final String ANDROID_MANIFEST_PACKAGE_PLACEHOLDER = Pattern.quote("${package}");
+    private static final String ANDROID_STRINGS_FILE = "strings.xml";
+    private static final String ANDROID_STRINGS_APP_NAME_PLACEHOLDER = Pattern.quote("${appName}");
+
     private final String template;
     private final URL templateURL;
     private String mainClass;
@@ -260,6 +265,15 @@ public class Templater {
             content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
             // need to fix up app.mainclass in case package name was empty
             content = content.replaceAll(Pattern.quote("mainclass=."), "mainclass=");
+            FileUtils.writeStringToFile(file, content, "UTF-8");
+        } else if (ANDROID_MANIFEST_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
+            content = content.replaceAll(ANDROID_MANIFEST_PACKAGE_PLACEHOLDER, propsPackageName);
+            FileUtils.writeStringToFile(file, content, "UTF-8");
+        } else if (ANDROID_STRINGS_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replaceAll(ANDROID_STRINGS_APP_NAME_PLACEHOLDER, appName);
             FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
             String content = FileUtils.readFileToString(file, "UTF-8");
