@@ -14,7 +14,7 @@
 
   <groupId>org.robovm</groupId>
   <artifactId>robovm-templates-parent</artifactId>
-  <version>1.4.1-SNAPSHOT</version>
+  <version>1.5.0</version>
   <name>RoboVM Templates for Eclipse and Maven integration</name>
   <packaging>pom</packaging>
   <url>http://www.robovm.com</url>
