@@ -58,7 +58,7 @@ public class Templater {
 
     private static final String ANDROID_MANIFEST_FILE = "AndroidManifest.xml";
     private static final String ANDROID_MANIFEST_PACKAGE_PLACEHOLDER = Pattern.quote("${package}");
-    private static final String ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER = Pattern.quote("${package}");
+    private static final String ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
     private static final String ANDROID_STRINGS_APP_NAME_PLACEHOLDER = Pattern.quote("${appName}");
     private static final String ANDROID_STRINGS_FILE = "strings.xml";
 
