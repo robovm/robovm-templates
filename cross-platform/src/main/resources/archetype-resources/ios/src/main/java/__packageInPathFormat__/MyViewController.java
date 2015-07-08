@@ -1,6 +1,5 @@
 package ${package};
 
-import org.robovm.apple.dispatch.DispatchQueue;
 import org.robovm.apple.uikit.UILabel;
 import org.robovm.apple.uikit.UIViewController;
 import org.robovm.objc.annotation.CustomClass;
