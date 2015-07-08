@@ -19,7 +19,7 @@ public class MyViewController extends UIViewController {
 
     @IBAction
     private void clicked() {
-        counterStore.Add(1);
-        label.setText("Click Nr. " + counterStore.Get());
+        counterStore.add(1);
+        label.setText("Click Nr. " + counterStore.get());
     }
 }

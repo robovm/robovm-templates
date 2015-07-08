@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MyActivity extends Activity {
+public class ${mainClass}Activity extends Activity {
     private CounterStore counterStore = new CounterStore();
 
     @Override
@@ -20,8 +20,8 @@ public class MyActivity extends Activity {
         counterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                counterStore.Add(1);
-                counterTextView.setText("Click Nr. " + counterStore.Get());
+                counterStore.add(1);
+                counterTextView.setText("Click Nr. " + counterStore.get());
             }
         });
     }

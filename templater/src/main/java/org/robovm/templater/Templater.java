@@ -22,10 +22,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
@@ -58,8 +58,9 @@ public class Templater {
 
     private static final String ANDROID_MANIFEST_FILE = "AndroidManifest.xml";
     private static final String ANDROID_MANIFEST_PACKAGE_PLACEHOLDER = Pattern.quote("${package}");
-    private static final String ANDROID_STRINGS_FILE = "strings.xml";
+    private static final String ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER = Pattern.quote("${package}");
     private static final String ANDROID_STRINGS_APP_NAME_PLACEHOLDER = Pattern.quote("${appName}");
+    private static final String ANDROID_STRINGS_FILE = "strings.xml";
 
     private final String template;
     private final URL templateURL;
@@ -270,6 +271,7 @@ public class Templater {
             String content = FileUtils.readFileToString(file, "UTF-8");
             String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
             content = content.replaceAll(ANDROID_MANIFEST_PACKAGE_PLACEHOLDER, propsPackageName);
+            content = content.replaceAll(ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER, mainClassName);
             FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (ANDROID_STRINGS_FILE.equals(file.getName())) {
             String content = FileUtils.readFileToString(file, "UTF-8");

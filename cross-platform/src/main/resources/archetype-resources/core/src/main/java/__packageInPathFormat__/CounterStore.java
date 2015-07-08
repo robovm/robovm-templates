@@ -3,11 +3,11 @@ package ${package};
 public class CounterStore {
     private int count;
 
-    public void Add(int num) {
+    public void add(int num) {
         count += num;
     }
 
-    public int Get() {
+    public int get() {
         return count;
     }
 }
