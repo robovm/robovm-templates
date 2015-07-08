@@ -124,6 +124,7 @@
   <modules>
     <module>default</module>
     <module>single-view</module>
+    <module>cross-platform</module>
     <module>console</module>
     <module>templater</module>
   </modules>
