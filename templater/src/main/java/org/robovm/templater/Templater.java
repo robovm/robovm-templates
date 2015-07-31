@@ -204,7 +204,7 @@ public class Templater {
                 packageName = mainClass.substring(0, index);
             }
         }
-        packageDirName = packageName.replaceAll("\\.", File.separator);
+        packageDirName = packageName.replace('.', File.separatorChar);
         if (appId == null || appId.length() == 0) {
             appId = packageName;
             if (appId == null || appId.length() == 0) {
