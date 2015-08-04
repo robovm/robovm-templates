@@ -256,9 +256,10 @@ public class Templater {
 
     private void substitutePlaceholdersInFile(File file) throws IOException {
         String extension = FilenameUtils.getExtension(file.getName());
-        String content = FileUtils.readFileToString(file, "UTF-8");
-        content = content.replace("\r", ""); // windows is special...
+
         if (ROBOVM_PROPERTIES_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replace("\r", ""); // windows is special...
             // special case for app id
             content = content.replaceAll(Pattern.quote("app.id=${package}"), "app.id=" + appId);
             content = content.replaceAll(ROBOVM_PROPERTIES_APP_NAME_PLACEHOLDER, appName);
@@ -267,19 +268,28 @@ public class Templater {
             content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
             // need to fix up app.mainclass in case package name was empty
             content = content.replaceAll(Pattern.quote("mainclass=."), "mainclass=");
+            FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (ANDROID_MANIFEST_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replace("\r", ""); // windows is special...
             String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
             content = content.replaceAll(ANDROID_MANIFEST_PACKAGE_PLACEHOLDER, propsPackageName);
             content = content.replaceAll(ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER, mainClassName);
+            FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (ANDROID_STRINGS_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replace("\r", ""); // windows is special...
             content = content.replaceAll(ANDROID_STRINGS_APP_NAME_PLACEHOLDER, appName);
+            FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replace("\r", ""); // windows is special...
             content = content.replaceAll(MAVEN_ARCHETYPE_SET_PLACEHOLDER, "");
             content = content.replaceAll(DOLLAR_SYMBOL_PLACEHOLDER, Matcher.quoteReplacement("$"));
             content = content.replaceAll(PACKAGE_PLACEHOLDER, getPackageNameReplacement(packageName));
             content = content.replaceAll(MAIN_CLASS_PLACEHOLDER, mainClassName);
+            FileUtils.writeStringToFile(file, content, "UTF-8");
         }
-        FileUtils.writeStringToFile(file, content, "UTF-8");
     }
 
     private static String getPackageNameReplacement(String packageName) {
