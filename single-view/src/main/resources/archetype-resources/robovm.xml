@@ -4,8 +4,7 @@
 <config>
     <executableName>${symbol_dollar}{app.executable}</executableName>
     <mainClass>${symbol_dollar}{app.mainclass}</mainClass>
-    <os>ios</os>
-    <arch>thumbv7</arch>
+    <os>ios</os>    
     <target>ios</target>
     <iosInfoPList>Info.plist.xml</iosInfoPList>
     <resources>
