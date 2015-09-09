@@ -17,12 +17,9 @@ public class ${mainClass}Activity extends Activity {
         final TextView counterTextView = (TextView) findViewById(R.id.counterTextView);
         final Button counterButton = (Button) findViewById(R.id.counterButton);
 
-        counterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                counterStore.add(1);
-                counterTextView.setText("Click Nr. " + counterStore.get());
-            }
+        counterButton.setOnClickListener((view) -> {
+            counterStore.add(1);
+            counterTextView.setText("Click Nr. " + counterStore.get());
         });
     }
 }

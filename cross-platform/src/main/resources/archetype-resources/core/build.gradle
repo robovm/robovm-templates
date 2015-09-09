@@ -1,8 +1,17 @@
-version 'unspecified'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
 
+plugins {
+    id "me.tatarka.retrolambda" version "3.2.2"
+}
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
+version 'unspecified'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
