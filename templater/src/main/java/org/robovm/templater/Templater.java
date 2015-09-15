@@ -60,6 +60,9 @@ public class Templater {
     private static final String ANDROID_MANIFEST_PACKAGE_PLACEHOLDER = Pattern.quote("${package}");
     private static final String ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER = Pattern.quote("${mainClass}");
     private static final String ANDROID_STRINGS_APP_NAME_PLACEHOLDER = Pattern.quote("${appName}");
+    private static final String ANDROID_BUILD_FILE = "build.gradle";
+    private static final String ANDROID_SDK_VERSION = Pattern.quote("${androidSdkVersion}");
+    private static final String ANDROID_BUILD_TOOLS_VERSION = Pattern.quote("${androidBuildToolsVersion}");
     private static final String ANDROID_STRINGS_FILE = "strings.xml";
 
     private final String template;
@@ -71,6 +74,8 @@ public class Templater {
     private String appName;
     private String appId;
     private String executable;
+    private String androidSdkVersion = "23";
+    private String androidBuildToolsVersion = "\"23.0.1\"";
 
     /**
      * Creates a new {@code Templater} with the specified {@code template}.
@@ -168,6 +173,30 @@ public class Templater {
      */
     public Templater executable(String executable) {
         this.executable = executable;
+        return this;
+    }
+
+    /**
+     * <p>
+     * Sets the Android SDK version, defaults to 23.
+     * </p>
+     * @param androidSdkVersion
+     * @return
+     */
+    public Templater androidSdkVersion(String androidSdkVersion) {
+        this.androidSdkVersion = androidSdkVersion;
+        return this;
+    }
+
+    /**
+     * <p>
+     * Sets the Android build tools version, defaults to 23.0.1.
+     * </p>
+     * @param androidBuildToolsVersion
+     * @return
+     */
+    public Templater androidBuildToolsVersion(String androidBuildToolsVersion) {
+        this.androidBuildToolsVersion = androidBuildToolsVersion;
         return this;
     }
 
@@ -281,6 +310,12 @@ public class Templater {
             content = content.replace("\r", ""); // windows is special...
             content = content.replaceAll(ANDROID_STRINGS_APP_NAME_PLACEHOLDER, appName);
             FileUtils.writeStringToFile(file, content, "UTF-8");
+        } else if (ANDROID_BUILD_FILE.equals(file.getName())) {
+            String content = FileUtils.readFileToString(file, "UTF-8");
+            content = content.replace("\r", ""); // windows is special...
+            content = content.replaceAll(ANDROID_SDK_VERSION, androidSdkVersion);
+            content = content.replaceAll(ANDROID_BUILD_TOOLS_VERSION, "\"" + androidBuildToolsVersion + "\"");
+            FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
             String content = FileUtils.readFileToString(file, "UTF-8");
             content = content.replace("\r", ""); // windows is special...
@@ -312,6 +347,8 @@ public class Templater {
         String appId = null;
         String executable = null;
         File projectRoot = null;
+        String androidSdkVersion = null;
+        String androidBuildToolsVersion = null;
 
         for (int i = 0; i < args.length; i += 2) {
             if (isOption(args[i])) {
@@ -342,6 +379,11 @@ public class Templater {
                 case 'g': // generate
                     projectRoot = new File(getOptionValue(args, i));
                     break;
+                case 'a': // android sdk version
+                    androidSdkVersion = getOptionValue(args, i);
+                    break;
+                case 'b': // android build tools version
+                    androidBuildToolsVersion = "\"" + getOptionValue(args, i) + "\"";
                 default:
                     // ignore
                     break;
@@ -376,12 +418,14 @@ public class Templater {
         System.out.println("RoboVM Templater\n"
                 + "Generates a new RoboVM project from a template\n"
                 + "Usage: templater\n"
-                + "-t <TEMPLATE>       template (required)\n"
-                + "-c <CLASS>          main class (required)\n"
-                + "-p <PACKAGE>        package name\n"
-                + "-n <NAME>           app name\n"
-                + "-i <ID>             app id\n"
-                + "-e <EXECUTABLE>     executable name\n"
-                + "-g <PROJECT_ROOT>   generates project to project root (required)");
+                + "-t <TEMPLATE>                        template (required)\n"
+                + "-c <CLASS>                           main class (required)\n"
+                + "-p <PACKAGE>                         package name\n"
+                + "-n <NAME>                            app name\n"
+                + "-i <ID>                              app id\n"
+                + "-e <EXECUTABLE>                      executable name\n"
+                + "-g <PROJECT_ROOT>                    generates project to project root (required)\n"
+                + "-a <ANDROID_SDK_VERSION>             Android SDK version, default 23 (optional)\n"
+                + "-b <ANDROID_BUILD_TOOLS_VERSION>     Android build tools version, default 23.0.1 (optional)\n");
     }
 }

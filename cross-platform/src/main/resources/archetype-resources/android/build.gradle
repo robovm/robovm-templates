@@ -19,13 +19,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion ${androidSdkVersion}
+    buildToolsVersion ${androidBuildToolsVersion}
 
     defaultConfig {
         applicationId "com.mycompany.fortune.android"
         minSdkVersion 9
-        targetSdkVersion 23
+        targetSdkVersion ${androidSdkVersion}
         versionCode 1
         versionName "1.0"
     }
