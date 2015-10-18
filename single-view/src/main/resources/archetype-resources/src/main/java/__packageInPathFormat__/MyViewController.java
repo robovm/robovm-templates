@@ -8,13 +8,9 @@ import org.robovm.objc.annotation.IBOutlet;
 
 @CustomClass("MyViewController")
 public class MyViewController extends UIViewController {
+    @IBOutlet
     private UILabel label;
     private int clickCount;
-
-    @IBOutlet
-    public void setLabel(UILabel label) {
-        this.label = label;
-    }
 
     @IBAction
     private void clicked() {

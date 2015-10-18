@@ -10,12 +10,8 @@ import org.robovm.objc.annotation.IBOutlet;
 public class MyViewController extends UIViewController {
     private static CounterStore counterStore = new CounterStore();
 
-    private UILabel label;
-
     @IBOutlet
-    public void setLabel(UILabel label) {
-        this.label = label;
-    }
+    private UILabel label;
 
     @IBAction
     private void clicked() {
