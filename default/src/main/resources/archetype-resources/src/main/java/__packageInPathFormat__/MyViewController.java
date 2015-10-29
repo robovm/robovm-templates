@@ -32,17 +32,12 @@ public class MyViewController extends UIViewController {
         view.addSubview(label);
 
         // Setup button.
-        button = UIButton.create(UIButtonType.RoundedRect);
+        button = new UIButton(UIButtonType.RoundedRect);
         button.setFrame(new CGRect(110, 150, 100, 40));
         button.setTitle("Click me!", UIControlState.Normal);
         button.getTitleLabel().setFont(UIFont.getBoldSystemFont(22));
 
-        button.addOnTouchUpInsideListener(new UIControl.OnTouchUpInsideListener() {
-            @Override
-            public void onTouchUpInside (UIControl control, UIEvent event) {
-                label.setText("Click Nr. " + (++clickCount));
-            }
-        });
+        button.addOnTouchUpInsideListener((control, event) -> label.setText("Click Nr. " + (++clickCount)));
         view.addSubview(button);
     }
 }
