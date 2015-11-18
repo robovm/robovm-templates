@@ -331,7 +331,7 @@ public class Templater {
         if (packageName == null || packageName.length() == 0) {
             return "";
         }
-        return String.format("package %s;", packageName);
+        return String.format("package %s", packageName);
     }
 
     public static void main(String[] args) {
