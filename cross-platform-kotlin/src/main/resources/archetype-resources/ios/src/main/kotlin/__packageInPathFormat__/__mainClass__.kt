@@ -14,7 +14,7 @@ class ${mainClass} : UIApplicationDelegateAdapter() {
     companion object {
         @JvmStatic fun main(args: Array<String>) {
             val pool = NSAutoreleasePool()
-            UIApplication.main<UIApplication, Main>(args, null, Main::class.java)
+            UIApplication.main<UIApplication, ${mainClass}>(args, null, ${mainClass}::class.java)
             pool.release()
         }
     }
