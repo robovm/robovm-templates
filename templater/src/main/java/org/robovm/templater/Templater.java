@@ -89,7 +89,7 @@ public class Templater {
             throw new IllegalArgumentException("No template specified");
         }
         this.template = template;
-        templateURL = Templater.class.getResource("/templates/robovm-" + template + "-template.tar.gz");
+        templateURL = Templater.class.getResource("/templates/robovm-templates-" + template + ".tar.gz");
         if (templateURL == null) {
             throw new IllegalArgumentException(String.format("Template with name '%s' doesn't exist!", template));
         }

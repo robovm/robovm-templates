@@ -8,7 +8,7 @@
     <version>1.11.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>robovm-cross-platform-kotlin-template</artifactId>
+  <artifactId>robovm-templates-cross-platform-kotlin</artifactId>
   <name>cross-platform-kotlin-template</name>
   <packaging>maven-archetype</packaging>
 

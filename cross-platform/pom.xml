@@ -8,7 +8,7 @@
     <version>1.11.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>robovm-cross-platform-template</artifactId>
+  <artifactId>robovm-templates-cross-platform</artifactId>
   <name>cross-platform-template</name>
   <packaging>maven-archetype</packaging>
 

@@ -8,8 +8,8 @@
     <version>1.11.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>robovm-single-view-template</artifactId>
-  <name>single-view-template</name>
+  <artifactId>robovm-templates-ios-single-view-no-ib</artifactId>
+  <name>ios-single-view-no-ib-template</name>
   <packaging>maven-archetype</packaging>
 
   <build>
