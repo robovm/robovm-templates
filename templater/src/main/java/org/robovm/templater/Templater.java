@@ -293,16 +293,14 @@ public class Templater {
             content = content.replaceAll(Pattern.quote("app.id=${package}"), "app.id=" + appId);
             content = content.replaceAll(ROBOVM_PROPERTIES_APP_NAME_PLACEHOLDER, appName);
             content = content.replaceAll(ROBOVM_PROPERTIES_MAIN_CLASS_PLACEHOLDER, mainClassName);
-            String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
-            content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
+            content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, getPackageNameReplacement(packageName));
             // need to fix up app.mainclass in case package name was empty
             content = content.replaceAll(Pattern.quote("mainclass=."), "mainclass=");
             FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (ANDROID_MANIFEST_FILE.equals(file.getName())) {
             String content = FileUtils.readFileToString(file, "UTF-8");
             content = content.replace("\r", ""); // windows is special...
-            String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
-            content = content.replaceAll(ANDROID_MANIFEST_PACKAGE_PLACEHOLDER, propsPackageName);
+            content = content.replaceAll(ANDROID_MANIFEST_PACKAGE_PLACEHOLDER, getPackageNameReplacement(packageName));
             content = content.replaceAll(ANDROID_MANIFEST_MAIN_CLASS_PLACEHOLDER, mainClassName);
             FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (ANDROID_STRINGS_FILE.equals(file.getName())) {
@@ -315,8 +313,7 @@ public class Templater {
             content = content.replace("\r", ""); // windows is special...
             content = content.replaceAll(ANDROID_SDK_VERSION, androidSdkVersion);
             content = content.replaceAll(ANDROID_BUILD_TOOLS_VERSION, "\"" + androidBuildToolsVersion + "\"");
-            String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
-            content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
+            content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, getPackageNameReplacement(packageName));
             FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
             String content = FileUtils.readFileToString(file, "UTF-8");
