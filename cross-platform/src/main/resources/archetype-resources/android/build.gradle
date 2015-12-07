@@ -23,7 +23,7 @@ android {
     buildToolsVersion ${androidBuildToolsVersion}
 
     defaultConfig {
-        applicationId "com.mycompany.fortune.android"
+        applicationId "${package}"
         minSdkVersion 9
         targetSdkVersion ${androidSdkVersion}
         versionCode 1

@@ -315,6 +315,8 @@ public class Templater {
             content = content.replace("\r", ""); // windows is special...
             content = content.replaceAll(ANDROID_SDK_VERSION, androidSdkVersion);
             content = content.replaceAll(ANDROID_BUILD_TOOLS_VERSION, "\"" + androidBuildToolsVersion + "\"");
+            String propsPackageName = packageName == null || packageName.length() == 0 ? "" : packageName;
+            content = content.replaceAll(ROBOVM_PROPERTIES_PACKAGE_PLACEHOLDER, propsPackageName);
             FileUtils.writeStringToFile(file, content, "UTF-8");
         } else if (SUBSTITUTED_PLACEHOLDER_FILES_EXTENSIONS.contains(extension)) {
             String content = FileUtils.readFileToString(file, "UTF-8");
