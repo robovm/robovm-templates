@@ -8,7 +8,7 @@
     <version>1.11.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>robovm-console-template</artifactId>
+  <artifactId>robovm-templates-console</artifactId>
   <name>console-template</name>
   <packaging>maven-archetype</packaging>
 

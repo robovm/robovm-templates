@@ -8,8 +8,8 @@
     <version>1.11.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>robovm-default-template</artifactId>
-  <name>default-template</name>
+  <artifactId>robovm-templates-ios-single-view</artifactId>
+  <name>ios-single-view-template</name>
   <packaging>maven-archetype</packaging>
 
   <build>

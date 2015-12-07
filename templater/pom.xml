@@ -35,31 +35,31 @@
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robovm-default-template</artifactId>
+            <artifactId>robovm-templates-ios-single-view-no-ib</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robovm-single-view-template</artifactId>
+            <artifactId>robovm-templates-ios-single-view</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robovm-console-template</artifactId>
+            <artifactId>robovm-templates-console</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robovm-cross-platform-template</artifactId>
+            <artifactId>robovm-templates-cross-platform</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
-            <artifactId>robovm-cross-platform-kotlin-template</artifactId>
+            <artifactId>robovm-templates-cross-platform-kotlin</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
         </dependency>
@@ -93,35 +93,35 @@
                     <artifactItems>
                         <artifactItem>
                             <groupId>org.robovm</groupId>
-                            <artifactId>robovm-default-template</artifactId>
+                            <artifactId>robovm-templates-ios-single-view-no-ib</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>
                         </artifactItem>
                         <artifactItem>
                             <groupId>org.robovm</groupId>
-                            <artifactId>robovm-console-template</artifactId>
+                            <artifactId>robovm-templates-console</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>
                         </artifactItem>
                         <artifactItem>
                             <groupId>org.robovm</groupId>
-                            <artifactId>robovm-single-view-template</artifactId>
+                            <artifactId>robovm-templates-ios-single-view</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>
                         </artifactItem>
                         <artifactItem>
                             <groupId>org.robovm</groupId>
-                            <artifactId>robovm-cross-platform-template</artifactId>
+                            <artifactId>robovm-templates-cross-platform</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>
                         </artifactItem>
                         <artifactItem>
                             <groupId>org.robovm</groupId>
-                            <artifactId>robovm-cross-platform-kotlin-template</artifactId>
+                            <artifactId>robovm-templates-cross-platform-kotlin</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>

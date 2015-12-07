@@ -122,8 +122,8 @@
   </pluginRepositories>
 
   <modules>
-    <module>default</module>
-    <module>single-view</module>
+    <module>ios-single-view-no-ib</module>
+    <module>ios-single-view</module>
     <module>cross-platform</module>
     <module>cross-platform-kotlin</module>
     <module>console</module>
