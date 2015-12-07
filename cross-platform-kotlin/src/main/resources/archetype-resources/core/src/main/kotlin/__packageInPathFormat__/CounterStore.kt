@@ -1,4 +1,4 @@
-package ${package}
+${package}
 
 class CounterStore {
     private var count: Int = 0

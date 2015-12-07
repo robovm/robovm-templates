@@ -1,4 +1,4 @@
-package ${package};
+${package}
 
 public class CounterStore {
     private int count;

@@ -1,4 +1,4 @@
-package ${package};
+${package}
 
 import org.robovm.apple.uikit.UILabel;
 import org.robovm.apple.uikit.UIViewController;
