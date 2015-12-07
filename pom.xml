@@ -124,6 +124,7 @@
   <modules>
     <module>ios-single-view-no-ib</module>
     <module>ios-single-view</module>
+    <module>tvos-single-view-no-ib</module>
     <module>cross-platform</module>
     <module>cross-platform-kotlin</module>
     <module>console</module>
