@@ -53,6 +53,12 @@
         </dependency>
         <dependency>
             <groupId>org.robovm</groupId>
+            <artifactId>robovm-templates-tvos-single-view</artifactId>
+            <version>${robovm.version}</version>
+            <type>tar.gz</type>
+        </dependency>
+        <dependency>
+            <groupId>org.robovm</groupId>
             <artifactId>robovm-templates-console</artifactId>
             <version>${robovm.version}</version>
             <type>tar.gz</type>
@@ -121,6 +127,13 @@
                         <artifactItem>
                             <groupId>org.robovm</groupId>
                             <artifactId>robovm-templates-tvos-single-view-no-ib</artifactId>
+                            <overWrite>true</overWrite>
+                            <type>tar.gz</type>
+                            <outputDirectory>src/main/resources/templates</outputDirectory>
+                        </artifactItem>
+                        <artifactItem>
+                            <groupId>org.robovm</groupId>
+                            <artifactId>robovm-templates-tvos-single-view</artifactId>
                             <overWrite>true</overWrite>
                             <type>tar.gz</type>
                             <outputDirectory>src/main/resources/templates</outputDirectory>
