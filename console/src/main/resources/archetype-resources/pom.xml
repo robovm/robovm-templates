@@ -10,8 +10,8 @@
     <packaging>jar</packaging>
 
     <properties>
-        <robovm.version>1.13.0</robovm.version>
-        <robovm.maven.version>1.13.0</robovm.maven.version>
+        <robovm.version>1.14.0</robovm.version>
+        <robovm.maven.version>1.14.0</robovm.maven.version>
     </properties>
 
     <version>${version}</version>
